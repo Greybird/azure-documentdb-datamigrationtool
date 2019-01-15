@@ -12,6 +12,11 @@ namespace Microsoft.DataTransfer.DocumentDb.Sink
         String,
 
         /// <summary>
+        /// Persist date and time as string, with no trailing 0 for under the second part.
+        /// </summary>
+        StringWithNoUnneededPrecisionUnderTheSecond,
+
+        /// <summary>
         /// Persist date and time as epoch time.
         /// </summary>
         Epoch,

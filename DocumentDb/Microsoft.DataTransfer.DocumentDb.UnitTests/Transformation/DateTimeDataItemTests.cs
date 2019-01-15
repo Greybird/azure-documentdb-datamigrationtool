@@ -4,6 +4,7 @@ using Microsoft.DataTransfer.Extensibility.Basics.Source;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Microsoft.DataTransfer.DocumentDb.UnitTests.Transformation
@@ -164,6 +165,64 @@ namespace Microsoft.DataTransfer.DocumentDb.UnitTests.Transformation
 
             Assert.AreEqual("2001-04-08T12:00:00.0000000Z", dateTimeDataItem.GetValue("Value"), TestResources.InvalidFieldValue);
             Assert.AreEqual(986731200L, dateTimeDataItem.GetValue("Epoch"), TestResources.InvalidFieldValue);
+        }
+
+        [TestMethod]
+        [DataRow("2000-02-01T00:00:00")]
+        [DataRow("2017-03-23T15:04:26.492626Z")]
+        [DataRow("9999-12-31T23:59:59.997")]
+        [DataRow("1986-02-25T00:00:00")]
+        [DataRow("2000-01-01T00:00:00")]
+        [DataRow("9999-12-31T23:59:59.9999999")]
+        public void GetValue_TopLevelStringWithNoUnneededPrecisionUnderTheSecondDateTimeTransformation_ReturnsString(string source)
+        {
+            var transformed = new StringWithNoUnneededPrecisionUnderTheSecondDateTimeDataItem(
+                new DictionaryDataItem(new Dictionary<string, object>
+                {
+                    { "StringProperty", "Hello world!" },
+                    { "DateTimeProperty", DateTime.Parse(source, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind) }
+                }));
+
+            CollectionAssert.AreEquivalent(new[] { "StringProperty", "DateTimeProperty" }, transformed.GetFieldNames().ToArray(),
+                TestResources.InvalidFieldNames);
+
+            Assert.AreEqual("Hello world!", transformed.GetValue("StringProperty"), TestResources.InvalidFieldValue);
+            Assert.AreEqual(source, transformed.GetValue("DateTimeProperty"), TestResources.InvalidFieldValue);
+        }
+
+        [TestMethod]
+        [DataRow("2000-02-01T00:00:00")]
+        [DataRow("2017-03-23T15:04:26.492626Z")]
+        [DataRow("9999-12-31T23:59:59.997")]
+        [DataRow("1986-02-25T00:00:00")]
+        [DataRow("2000-01-01T00:00:00")]
+        [DataRow("9999-12-31T23:59:59.9999999")]
+        public void GetValue_NestedStringWithNoUnneededPrecisionUnderTheSecondDateTimeTransformation_ReturnsString(string source)
+        {
+            var transformed = new StringWithNoUnneededPrecisionUnderTheSecondDateTimeDataItem(
+                new DictionaryDataItem(new Dictionary<string, object>
+                {
+                    { "StringProperty", "Nested world!" },
+                    { "Nested", new Dictionary<string, object>
+                        {
+                            { "DateTimeProperty", DateTime.Parse(source, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind) }
+                        }
+                    }
+                }));
+
+            CollectionAssert.AreEquivalent(new[] { "StringProperty", "Nested" }, transformed.GetFieldNames().ToArray(),
+                TestResources.InvalidFieldNames);
+
+            Assert.AreEqual("Nested world!", transformed.GetValue("StringProperty"), TestResources.InvalidFieldValue);
+
+            var nested = transformed.GetValue("Nested") as IDataItem;
+
+            Assert.IsNotNull(nested, TestResources.NullNestedDataItem);
+
+            CollectionAssert.AreEquivalent(new[] { "DateTimeProperty" }, nested.GetFieldNames().ToArray(),
+                TestResources.InvalidFieldNames);
+
+            Assert.AreEqual(source, nested.GetValue("DateTimeProperty"), TestResources.InvalidFieldValue);
         }
     }
 }
