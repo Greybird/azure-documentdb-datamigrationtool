@@ -18,6 +18,8 @@ namespace Microsoft.DataTransfer.DocumentDb.Transformation.Dates
             {
                 case DateTimeHandling.String:
                     return new StringDateTimeDataItem(dataItem);
+                case DateTimeHandling.StringWithNoUnneededPrecisionUnderTheSecond:
+                    return new StringWithNoUnneededPrecisionUnderTheSecondDateTimeDataItem(dataItem);
                 case DateTimeHandling.Epoch:
                     return new EpochDateTimeDataItem(dataItem);
                 case DateTimeHandling.Both:

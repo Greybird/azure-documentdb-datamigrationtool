@@ -136,6 +136,7 @@
     <Compile Include="Source\DocumentDbSourceAdapterInternalFactory.cs" />
     <Compile Include="StrongReference.cs" />
     <Compile Include="Transformation\DataItemWrapper.cs" />
+    <Compile Include="Transformation\Dates\SmallStringDateTimeDataItem.cs" />
     <Compile Include="Transformation\Remap\RemapFieldsTransformation.cs" />
     <Compile Include="Sink\DataItemSurrogate.cs" />
     <Compile Include="Sink\Parallel\DocumentDbParallelSinkAdapter.cs" />

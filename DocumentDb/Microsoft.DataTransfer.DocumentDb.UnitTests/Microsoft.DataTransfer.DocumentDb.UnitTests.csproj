@@ -85,7 +85,6 @@
     <Compile Include="Sink\LengthCappedEnumerableJsonConverterTests.cs" />
     <Compile Include="Sink\Substitutions\RangeSubstitutionsResolverTests.cs" />
     <Compile Include="Source\AsyncEnumeratorMock.cs" />
-    <Compile Include="Transformation\YounitedDateTimeDataItemTests.cs" />
     <Compile Include="Transformation\DateTimeDataItemTests.cs" />
     <Compile Include="Transformation\RemappedFieldsDataItemTests.cs" />
     <Compile Include="Source\DocumentDbSourceAdapterTests.cs" />

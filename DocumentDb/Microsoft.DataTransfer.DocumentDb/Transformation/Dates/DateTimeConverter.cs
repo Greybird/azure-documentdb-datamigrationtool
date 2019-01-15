@@ -16,5 +16,10 @@ namespace Microsoft.DataTransfer.DocumentDb.Transformation.Dates
         {
             return timeStamp.ToString("O", CultureInfo.InvariantCulture);
         }
+
+        public static string ToStringWithNoUnneededPrecisionUnderTheSecond(DateTime timeStamp)
+        {
+            return timeStamp.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'FFFFFFFK", CultureInfo.InvariantCulture);
+        }
     }
 }
