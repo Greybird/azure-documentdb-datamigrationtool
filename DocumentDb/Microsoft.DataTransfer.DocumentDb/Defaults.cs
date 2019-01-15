@@ -49,13 +49,13 @@ namespace Microsoft.DataTransfer.DocumentDb
             public TimeSpan RetryInterval { get { return TimeSpan.FromSeconds(1); } }
 
             public int SinkCollectionThroughput { get { return 1000; } }
-            public DateTimeHandling SinkDateTimeHandling { get { return DateTimeHandling.String; } }
+            public DateTimeHandling SinkDateTimeHandling { get { return DateTimeHandling.StringWithNoUnneededPrecisionUnderTheSecond; } }
 
             public int BulkSinkBatchSize { get { return 50; } }
             public int BulkSinkMaxScriptSize { get { return 512 * 1024 - 10; } } // Allow 10 bytes for additional stored procedure overhead
             public string BulkSinkStoredProcFile { get { return "BulkInsert.js"; } }
 
-            public int ParallelSinkNumberOfParallelRequests { get { return 10; } }
+            public int ParallelSinkNumberOfParallelRequests { get { return 100; } }
         }
     }
 }
