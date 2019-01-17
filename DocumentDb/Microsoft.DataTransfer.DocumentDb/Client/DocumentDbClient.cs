@@ -13,6 +13,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.CosmosDB.BulkExecutor;
 
 namespace Microsoft.DataTransfer.DocumentDb.Client
 {
@@ -125,6 +126,23 @@ namespace Microsoft.DataTransfer.DocumentDb.Client
         public Task DeleteStoredProcedureAsync(string storedProcedureLink)
         {
             return client.DeleteStoredProcedureAsync(storedProcedureLink);
+        }
+
+
+        public async Task<IDocumentDbBulkWriter> CreateBulkWriter(string collectionName, CancellationToken cancellation)
+        {
+            var database = await GetOrCreateDatabase(databaseName, cancellation);
+            var collection = await TryGetCollection(database, collectionName, cancellation);
+            var underlyingClient = client.UnderlyingClient;
+
+            IBulkExecutor bulkExecutor = new BulkExecutor(underlyingClient, collection);
+            await bulkExecutor.InitializeAsync();
+
+            // Set retries to 0 to pass complete control to bulk executor.
+            underlyingClient.ConnectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 0;
+            underlyingClient.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
+
+            return new DocumentDbBulkWriter(bulkExecutor);
         }
 
         public async Task<IAsyncEnumerator<IReadOnlyDictionary<string, object>>> QueryDocumentsAsync(string collectionNamePattern, string query, CancellationToken cancellation)

@@ -14,5 +14,7 @@ namespace Microsoft.DataTransfer.DocumentDb.Client
         Task<string> CreateStoredProcedureAsync(string collectionLink, string name, string body);
         Task<StoredProcedureResult<TResult>> ExecuteStoredProcedureAsync<TResult>(string storedProcedureLink, params dynamic[] args);
         Task DeleteStoredProcedureAsync(string storedProcedureLink);
+
+        Task<IDocumentDbBulkWriter> CreateBulkWriter(string collectionName, CancellationToken cancellation);
     }
 }

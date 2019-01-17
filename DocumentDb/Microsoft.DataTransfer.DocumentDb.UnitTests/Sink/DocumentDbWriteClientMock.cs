@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.CosmosDB.BulkExecutor;
 
 namespace Microsoft.DataTransfer.DocumentDb.UnitTests.Sink
 {
@@ -76,6 +77,11 @@ namespace Microsoft.DataTransfer.DocumentDb.UnitTests.Sink
         {
             deletedStoredProcedures.Add(storedProcedureLink);
             return TaskHelper.NoOp;
+        }
+
+        public Task<IDocumentDbBulkWriter> CreateBulkWriter(string collectionName, CancellationToken cancellation)
+        {
+            throw new NotSupportedException();
         }
 
         public void Dispose() { }

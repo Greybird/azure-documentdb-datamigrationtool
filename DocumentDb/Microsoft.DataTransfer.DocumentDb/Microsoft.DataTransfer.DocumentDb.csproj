@@ -63,12 +63,15 @@
     <Compile Include="..\..\Solution Items\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Client\DocumentDbBulkImportResult.cs" />
+    <Compile Include="Client\DocumentDbBulkWriter.cs" />
     <Compile Include="Client\DocumentDbProbeClient.cs" />
     <Compile Include="Client\DocumentDbConnectionStringBuilder.cs" />
     <Compile Include="Client\DocumentQueryExtensions.cs" />
     <Compile Include="Client\Enumeration\AsyncEnumerator.cs" />
     <Compile Include="Client\Enumeration\AsyncEnumeratorBase.cs" />
     <Compile Include="Client\Enumeration\DocumentSurrogateQueryAsyncEnumerator.cs" />
+    <Compile Include="Client\IDocumentDbBulkWriter.cs" />
     <Compile Include="Client\Serialization\DictionaryCreationConverter.cs" />
     <Compile Include="Client\Serialization\DocumentSurrogate.cs" />
     <Compile Include="Client\Serialization\DocumentSurrogateJsonConverter.cs" />
