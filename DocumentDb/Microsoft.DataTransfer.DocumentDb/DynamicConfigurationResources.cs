@@ -85,6 +85,14 @@ namespace Microsoft.DataTransfer.DocumentDb
             get { return Format(ConfigurationResources.ParallelSink_ParallelRequestsFormat, Defaults.Current.ParallelSinkNumberOfParallelRequests); }
         }
 
+        /// <summary>
+        /// Gets the description for batch size configuration property.
+        /// </summary>
+        public static string EnhancedBulkSink_BatchSize
+        {
+            get { return Format(ConfigurationResources.EnhancedBulkSink_BatchSize, Defaults.Current.EnhancedBulkSinkBatchSize); }
+        }
+
         private DynamicConfigurationResources() { }
     }
 }

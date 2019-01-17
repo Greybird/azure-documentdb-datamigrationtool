@@ -90,6 +90,15 @@
     </Compile>
     <Compile Include="Sink\DocumentDbSinkAdapterConfigurationProvider.cs" />
     <Compile Include="Sink\ISharedDocumentDbSinkAdapterConfiguration.cs" />
+    <Compile Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapterConfiguration.cs" />
+    <Compile Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapterConfigurationPage.xaml.cs">
+      <DependentUpon>DocumentDbEnhancedBulkSinkAdapterConfigurationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapterConfigurationProvider.cs" />
+    <Compile Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapterInternalConfigurationProvider.cs" />
+    <Compile Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapterConfigurationSummaryPage.xaml.cs">
+      <DependentUpon>DocumentDbEnhancedBulkSinkAdapterConfigurationSummaryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sink\Parallel\DocumentDbParallelSinkAdapterConfiguration.cs" />
     <Compile Include="Sink\Parallel\DocumentDbParallelSinkAdapterConfigurationPage.xaml.cs">
       <DependentUpon>DocumentDbParallelSinkAdapterConfigurationPage.xaml</DependentUpon>
@@ -164,6 +173,14 @@
     <Page Include="Sink\DocumentDbSinkAdapterCommonConfigurationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapterConfigurationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapterConfigurationSummaryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Sink\Parallel\DocumentDbParallelSinkAdapterConfigurationPage.xaml">
       <SubType>Designer</SubType>

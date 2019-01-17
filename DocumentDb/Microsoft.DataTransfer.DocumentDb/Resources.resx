@@ -234,4 +234,10 @@
   <data name="InvalidCollectionThroughput" xml:space="preserve">
     <value>Collection throughput should be greater than zero</value>
   </data>
+  <data name="EnhancedBulkSinkDescription" xml:space="preserve">
+    <value>Uploads data into a DocumentDB collection in batches</value>
+  </data>
+  <data name="BulkImportInvalidDocument" xml:space="preserve">
+    <value>Bulk Import rejected the document as invalid</value>
+  </data>
 </root>

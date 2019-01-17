@@ -1,6 +1,7 @@
 ﻿using Microsoft.DataTransfer.Basics;
 using Microsoft.DataTransfer.DocumentDb.Exceptions;
 using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 
 namespace Microsoft.DataTransfer.DocumentDb
@@ -162,6 +163,11 @@ namespace Microsoft.DataTransfer.DocumentDb
         public static Exception UnexpectedAsyncFlushError(Exception error)
         {
             return new Exception(FormatMessage(Resources.UnexpectedAsyncFlushErrorMessageFormat, error.Message), error);
+        }
+
+        public static Exception BulkImportInvalidDocument()
+        {
+            return new InvalidDataException(FormatMessage(Resources.BulkImportInvalidDocument));
         }
     }
 }

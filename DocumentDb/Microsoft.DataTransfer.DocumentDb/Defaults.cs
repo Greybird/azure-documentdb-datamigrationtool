@@ -56,6 +56,8 @@ namespace Microsoft.DataTransfer.DocumentDb
             public string BulkSinkStoredProcFile { get { return "BulkInsert.js"; } }
 
             public int ParallelSinkNumberOfParallelRequests { get { return 10; } }
+
+            public int EnhancedBulkSinkBatchSize { get { return 10000; } }
         }
     }
 }

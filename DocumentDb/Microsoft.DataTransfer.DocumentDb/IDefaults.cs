@@ -53,5 +53,10 @@ namespace Microsoft.DataTransfer.DocumentDb
         /// Gets the default maximum number of parallel insert operations.
         /// </summary>
         int ParallelSinkNumberOfParallelRequests { get; }
+
+        /// <summary>
+        /// Gets the default number of data artifacts bundled into one batch.
+        /// </summary>
+        int EnhancedBulkSinkBatchSize { get; }
     }
 }

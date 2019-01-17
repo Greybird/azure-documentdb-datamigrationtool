@@ -120,6 +120,12 @@
     <Compile Include="Client\PartitionResolvers\Javascript\JavascriptMemberExpressionReader.cs" />
     <Compile Include="Client\PartitionResolvers\Javascript\Visitors\DataItemMemberEvaluationVisitor.cs" />
     <Compile Include="Client\PartitionResolvers\Javascript\Visitors\IJavascriptMemberExpressionVisitor.cs" />
+    <Compile Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapter.cs" />
+    <Compile Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapterFactory.cs" />
+    <Compile Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapterInstanceConfiguration.cs" />
+    <Compile Include="Sink\EnhancedBulk\DocumentDbEnhancedBulkSinkAdapterInternalFactory.cs" />
+    <Compile Include="Sink\EnhancedBulk\IDocumentDbEnhancedBulkSinkAdapterConfiguration.cs" />
+    <Compile Include="Sink\EnhancedBulk\IDocumentDbEnhancedBulkSinkAdapterInstanceConfiguration.cs" />
     <Compile Include="Sink\Parallel\DocumentDbParallelSinkAdapterFactory.cs" />
     <Compile Include="Sink\DocumentDbSinkAdapterFactoryBase.cs" />
     <Compile Include="Sink\Parallel\DocumentDbParallelSinkAdapterInstanceConfiguration.cs" />

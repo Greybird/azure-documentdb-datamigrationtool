@@ -138,6 +138,9 @@
   <data name="ConnectionString" xml:space="preserve">
     <value>Connection string (example: "AccountEndpoint=xyz;AccountKey=xyz;Database=xyz")</value>
   </data>
+  <data name="EnhancedBulkSink_BatchSize" xml:space="preserve">
+    <value>Optional, default is {0}. Number of documents in one batch</value>
+  </data>
   <data name="ParallelSink_Collection" xml:space="preserve">
     <value>Name of the documents collection</value>
   </data>
