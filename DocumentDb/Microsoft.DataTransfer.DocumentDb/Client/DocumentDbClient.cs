@@ -133,14 +133,13 @@ namespace Microsoft.DataTransfer.DocumentDb.Client
         {
             var database = await GetOrCreateDatabase(databaseName, cancellation);
             var collection = await TryGetCollection(database, collectionName, cancellation);
-            var underlyingClient = client.UnderlyingClient;
-
-            IBulkExecutor bulkExecutor = new BulkExecutor(underlyingClient, collection);
+            
+            IBulkExecutor bulkExecutor = new BulkExecutor(client, collection);
             await bulkExecutor.InitializeAsync();
 
             // Set retries to 0 to pass complete control to bulk executor.
-            underlyingClient.ConnectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 0;
-            underlyingClient.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
+            client.ConnectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 0;
+            client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
 
             return new DocumentDbBulkWriter(bulkExecutor);
         }
